@@ -15,14 +15,14 @@ title = "Blowfish"
   # copyright = "Copy, _right?_ :thinking_face:"
 
 [params.author]
-   name = "Emaad Khan"
+   name = "Emaad Minhas"
    email = "ezminhas@proton.me"
 #   image = "img/blowfish_logo.png"
 #   imageQuality = 96
-   headline = "I'm only human"
-#   bio = "A little bit about you"
+   headline = "Exploring Mathematics and Physics through Simulation and Interactive Design"
+   bio = "Hey. My name is Emaad and I'm an applied mathematics and physics student sharing my journey exploring scientific computing and beyond. If this post was interesting, you might also enjoy my other [articles](/posts/), as well as my projects on [GitHub](https://github/ezminhas)."
    links = [
-     { email = "ezminhas@proton.me" },
+     { email = "mailto:ezminhas@proton.me" },
 #     { link = "https://link-to-some-website.com/" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
 #     { apple = "https://www.apple.com" },
