@@ -1,6 +1,5 @@
 ---
 showDate: false
-showAuthor: false
 ---
 
 ## About Dune Labs

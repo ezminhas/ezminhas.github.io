@@ -14,11 +14,8 @@ title = "Dune Labs"
   # description = "My awesome website"
   # copyright = "Copy, _right?_ :thinking_face:"
 
-[params.homepage]
-  title = "Dune Labs by Emaad Khan"
-
 [params.author]
-   name = "Emaad Khan"
+   name = "Dune Labs by Emaad Khan"
    email = "ezminhas@proton.me"
 #   image = "img/blowfish_logo.png"
 #   imageQuality = 96
