@@ -23,5 +23,15 @@ $$ F= G \frac{m_1 m_2}{r^2} $$
 Where \(m_1, m_2\) are the masses of the two bodies, \(r\) is the separation between the two bodies, and \(G\) is the universal gravitation constant. In order to preserve the direction of the force, the law of universal gravitation in vectorial form is given as:
 $$ \mathbf{F} = G \frac{m_1 m_2}{|\mathbf{r}_{21}|^3} \mathbf{r_{21} $$
 
+### Summing Forces and Presenting the Differential Equation
 From here, we can pretty easily derive an equation for the acceleration of a body, influenced by however many massive bodies exist alongside it:
-$$ a_i = \sum_{i \neq j}^{N} G \frac{m_j}{|\mathbf{r_{ji}}|^3} \mathbf{r_{ji}} $$
+$$ \mathbf{a_i} = \sum_{i \neq j}^{N} G \frac{m_j}{|\mathbf{r_{ji}}|^3} \mathbf{r_{ji}} $$
+Where \(\mathbf{r_{ji}} = \mathbf{r_j} - \mathbf{r_i}\)
+But we're only really interested in position. Velocity and acceleration are just functions of position. So perhaps we should represent what we are looking for exactly. 
+$$ \frac{d^2 \mathbf{r_i}}{d t^2} = \sum_{i \neq j}^{N} G \frac{m_j}{|\mathbf{r_{ji}}|^3} \mathbf{r_{ji}} $$
+
+## The Solution
+
+### Dealing with our Differential Equation
+
+So, we now have a pretty simple second-order ordinary differential equation to solve. 
