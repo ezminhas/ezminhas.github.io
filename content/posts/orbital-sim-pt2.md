@@ -3,7 +3,7 @@ Title: "Simulating Planetary Orbits Part 2: Programming the Numerical Integrator
 Date: 2025-09-15
 ---
 
-{{ <katex> }}
+{{< katex >}}
 ## Introduction
 In [History of the *n*-Body Problem](https://ezminhas.github.io/posts/orbital-sim-pt1/), we discussed the development of the *n*-body problem into the exact sort of problem a computer simulation would excel at explaining. Now, it's time to build one. We'll be programming our *n*-body system-simulator in Python initially. Before beginning, it's important to plan out a tentative roadmap, to keep us on track.
 
@@ -19,6 +19,9 @@ In [History of the *n*-Body Problem](https://ezminhas.github.io/posts/orbital-si
 ### Newton's Law of Universal Gravitation
 
 Newton's law of universal gravitation, as formulated in many physics courses today, is given as this equation:
-$$ F = G \frac{m_1 m_2}{r^2} $$
+$$ F= G \frac{m_1 m_2}{r^2} $$
 Where \(m_1, m_2\) are the masses of the two bodies, \(r\) is the separation between the two bodies, and \(G\) is the universal gravitation constant. In order to preserve the direction of the force, the law of universal gravitation in vectorial form is given as:
 $$ \mathbf{F} = G \frac{m_1 m_2}{|\mathbf{r}_{21}|^3} \mathbf{r_{21} $$
+
+From here, we can pretty easily derive an equation for the acceleration of a body, influenced by however many massive bodies exist alongside it:
+$$ a_i = \sum_{i \neq j}^{N} G \frac{m_j}{|\mathbf{r_{ji}}|^3} \mathbf{r_{ji}} $$
