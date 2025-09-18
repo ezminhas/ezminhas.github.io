@@ -67,7 +67,6 @@ G = 6.674 * 10**-11
 R = np.array([[0.0, 0.0, 0.0],[1.5e11, 0.0, 0.0],[1.5e11 + 3.844e8, 0.0, 0.0]])
 V = np.array([[0.0, 0.0, 0.0],[0.0, 29780.0, 0.0],[0.0, 29780.0 + 1022.0, 0.0]])
 A = np.zeros((N, 3))
-
 ```
 
 Euler's method can now be implemented. Firstly, we want to know the period of time over which we want to see the Earth and Moon orbits. I think 1 year is pretty reasonable. Another reasonable expectation is that the simulation will run and completely generate an animation within one minute. One year is \(86,400 \cdot 365\) seconds. If our step height is only one second, that's 31,536,000 steps. Clearly, our step height needs to be closer to one hour, or 3600 seconds. So let's set the number of steps, and step height.
@@ -79,7 +78,6 @@ t = 0;
 dt = 3600
 # The total number of steps is t_max / 8760
 t_max = dt * 8760
-
 ```
 
 Keep in mind that while the simulation could have been defined by the number of steps and step height, the variables were set up and named to more explicitly show the passage of time.
@@ -99,7 +97,6 @@ while(t < t_max):
     t += dt
     R += V * dt
     V += A * dt
-
 ```
 
 The entire block is within a `while` loop, to ensure the total number of steps are not exceeded. The `for` loop is a representation of the summation found within our ODE, which we earlier derived directly from Newton's law of universal gravitation. The final two lines are where the Euler method is actually being implemented, giving us the vital position and velocity data needed.
@@ -130,10 +127,26 @@ while(t < t_max):
 # Convert R_history to a numpy array for easier manipulation later
 R_history = np.array(R_history)
 print(R_history)
-
 ```
 
-We can now use `matplotlib.animation` to generate a visualization of our simulation.
+We can now use `matplotlib.animation` to generate a visualization of our simulation. Generating an MP4 of our animation, and using several techniques to create an extremely optimized simulation, we can cut our compute time down to 20 seconds. Here's what the one year simulation looks like:
+
+<video autoplay loop muted playsinline width="100%">
+  <source src="vid1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+Not bad at all. Notice that becuase of how close the moon and the earth are compared to their distance from the sun, the earth's path, blue in this animation, is really the only path visible. Let's now look further out, to 30 years. What does our Euler method simulation, still with a step time of 1 hour, show us?
+
+<video autoplay loop muted playsinline width="100%">
+  <source src="vid2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+Ok, that doesn't look very good. By the end of our simulation, we can clearly see how the Earth's orbital radius has increased. On top of that, we can also see how the moon has completely separated from the Earth, and is now moving like a separate planet. It's unlikely we made a mistake, because this error is systemic, and grows as the simulation evolves. Clearly, we need to investigate the Euler method of numerical integration further.
+
+
+#### Investigating Error in Numerical Integration
 
 As an example, let's use one of simplest ODEs and its solution, setting the initial condition \(t(0) = 0, x(t_0) = 1\),
 
@@ -143,7 +156,7 @@ and its analytical solution,
 
 $$ x(t) = e^{t} $$
 
-Let's Euler's method to evaluate this ODE for \(0 \leq t \leq 10\). Performing 1000 steps with a step height of 0.01 per step seems appropriate for this time range. So, what does it look like?
+Let's use Euler's method to evaluate this ODE for \(0 \leq t \leq 10\). Performing 1000 steps with a step height of 0.01 per step seems appropriate for this time range. So, what does it look like?
 
 {{< figure
     src="fig1.png"
@@ -155,7 +168,7 @@ Looks pretty good, right? Sure, there's some deviation past about \(t = 9\) or s
     src="fig2.png"
     >}}
 
-
+Alright, so clearly the Euler method-derived approximation of \(x(t)\) is immediately deviating substantially from the actual curve itself. This really gets to the heart of the issue with Euler's method, especially when simulating hundreds or thousands of years of system history.
 
 Recall our ODE for the *n*-body problem,
 $$ \mathbf{r}''(t) = \sum_{i \neq j}^{N} G \frac{m_j}{|\mathbf{r_{ji}}|^3} \mathbf{r_{ji}}  $$
