@@ -1,5 +1,5 @@
 ---
-Title: "Simulating Planetary Orbits Part II: Programming the Numerical Integrator"
+Title: "Simulating Planetary Orbits Part I: Programming the Numerical Integrator"
 Date: 2025-09-15
 ---
 
@@ -143,7 +143,7 @@ Not bad at all. Notice that becuase of how close the moon and the earth are comp
   Your browser does not support the video tag.
 </video>
 
-Ok, that doesn't look very good. By the end of our simulation, we can clearly see how the Earth's orbital radius has increased. On top of that, we can also see how the moon has completely separated from the Earth, and is now moving like a separate planet. It's unlikely we made a mistake, because this error is systemic, and grows as the simulation evolves. In Part III, we will further investigate the Euler method and its shortcomings, as well as more appropriate numerical integration methods for *n*-body simulations.
+Ok, that doesn't look very good. By the end of our simulation, we can clearly see how the Earth's orbital radius has increased. On top of that, we can also see how the moon has completely separated from the Earth, and is now moving like a separate planet. It's unlikely we made a mistake per se, because this error is systemic, and grows as the simulation evolves. In Part II, we will investigate where this error comes from, and how we can fix it.
 
 
 
